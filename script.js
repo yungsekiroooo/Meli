@@ -1,4 +1,3 @@
-
 function calculate() {
     const f = document.forms["gradeForm"];
 
@@ -13,48 +12,17 @@ function calculate() {
         return totalWeight ? sum / totalWeight : 0;
     }
 
-    // Each subject: {name, weights[], inputNames[], coefficient}
     const subjects = [
-        {
-            name: "org", inputs: ["org_emd1", "org_emd2", "org_td"],
-            weights: [33, 33, 34], coef: 3
-        },
-        {
-            name: "bio", inputs: ["bio_emd1", "bio_emd2", "bio_emd3", "bio_td"],
-            weights: [22, 22, 22, 34], coef: 3
-        },
-        {
-            name: "gen", inputs: ["gen_emd1", "gen_emd2", "gen_td"],
-            weights: [33, 33, 34], coef: 3
-        },
-        {
-            name: "math", inputs: ["math_emd1", "math_emd2", "math_td"],
-            weights: [33, 33, 34], coef: 3
-        },
-        {
-            name: "bv", inputs: ["bv_emd1", "bv_emd2", "bv_td"],
-            weights: [33, 33, 34], coef: 2
-        },
-        {
-            name: "phy", inputs: ["phy_emd1", "phy_emd2", "phy_td"],
-            weights: [33, 33, 34], coef: 2
-        },
-        {
-            name: "anato", inputs: ["anato"],
-            weights: [1], coef: 2
-        },
-        {
-            name: "sh", inputs: ["sh"],
-            weights: [1], coef: 1
-        },
-        {
-            name: "physio", inputs: ["physio"],
-            weights: [1], coef: 2
-        },
-        {
-            name: "fr", inputs: ["fr"],
-            weights: [1], coef: 1
-        }
+        { name: "org", inputs: ["org_emd1", "org_emd2", "org_td"], weights: [33, 33, 34], coef: 3 },
+        { name: "bio", inputs: ["bio_emd1", "bio_emd2", "bio_emd3", "bio_td"], weights: [22, 22, 22, 34], coef: 3 },
+        { name: "gen", inputs: ["gen_emd1", "gen_emd2", "gen_td"], weights: [33, 33, 34], coef: 3 },
+        { name: "math", inputs: ["math_emd1", "math_emd2", "math_td"], weights: [33, 33, 34], coef: 3 },
+        { name: "bv", inputs: ["bv_emd1", "bv_emd2", "bv_td"], weights: [33, 33, 34], coef: 2 },
+        { name: "phy", inputs: ["phy_emd1", "phy_emd2", "phy_td"], weights: [33, 33, 34], coef: 2 },
+        { name: "anato", inputs: ["anato"], weights: [1], coef: 2 },
+        { name: "sh", inputs: ["sh"], weights: [1], coef: 1 },
+        { name: "physio", inputs: ["physio"], weights: [1], coef: 2 },
+        { name: "fr", inputs: ["fr"], weights: [1], coef: 1 }
     ];
 
     let total = 0, coefTotal = 0;
@@ -69,13 +37,11 @@ function calculate() {
 
     const finalAvg = total / coefTotal;
     document.getElementById("final_result").innerText = "المعدل النهائي: " + finalAvg.toFixed(2);
-}
 
-
-    if (!isNaN(finalAvg)) {
-        if (finalAvg >= 10) {
-            alert("🎉 تهانينا! لقد نجحت بمعدل " + finalAvg.toFixed(2) + " 🎉");
-        } else {
-            alert("😢 لم تحقق المعدل المطلوب. حاول مرة أخرى.");
-        }
+    // رسالة النجاح
+    if (finalAvg >= 10) {
+        alert("🎉 تهانينا! لقد نجحت بمعدل " + finalAvg.toFixed(2) + " 🎉");
+    } else {
+        alert("😢 لم تحقق المعدل المطلوب. حاول مرة أخرى.");
     }
+}
