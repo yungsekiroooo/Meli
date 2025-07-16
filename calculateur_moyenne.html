@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculateur de Moyenne</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f4f4f4; padding: 20px; }
+    h1 { color: #4A148C; text-align: center; }
+    .container { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    label, input { display: block; margin: 10px 0; }
+    input[type="number"] { width: 100%; padding: 8px; }
+    .btn { background: #4A148C; color: white; padding: 10px; border: none; width: 100%; cursor: pointer; border-radius: 5px; }
+    .result { margin-top: 20px; font-size: 18px; text-align: center; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Calcul de Moyenne - Médecine</h1>
+
+    <form id="moyenneForm">
+      <h3>Chimie Organique et Générale</h3>
+      <label>EMD 1:</label>
+      <input type="number" step="0.01" id="chimie1">
+      <label>EMD 2:</label>
+      <input type="number" step="0.01" id="chimie2">
+      <label>Exam de TD:</label>
+      <input type="number" step="0.01" id="chimieTD">
+
+      <h3>Biologie Cellulaire</h3>
+      <label>EMD 1:</label>
+      <input type="number" step="0.01" id="bioCell1">
+      <label>EMD 2:</label>
+      <input type="number" step="0.01" id="bioCell2">
+      <label>EMD 3:</label>
+      <input type="number" step="0.01" id="bioCell3">
+      <label>Exam de TD:</label>
+      <input type="number" step="0.01" id="bioCellTD">
+
+      <h3>Autres matières (Moyenne de module)</h3>
+      <label>Mathématiques:</label>
+      <input type="number" step="0.01" id="math">
+      <label>Physique:</label>
+      <input type="number" step="0.01" id="phys">
+      <label>Biologie Végétale:</label>
+      <input type="number" step="0.01" id="bioVeg">
+      <label>Anatomie:</label>
+      <input type="number" step="0.01" id="anat">
+      <label>Physiologie:</label>
+      <input type="number" step="0.01" id="physio">
+      <label>Français:</label>
+      <input type="number" step="0.01" id="fr">
+      <label>Sciences Humaines:</label>
+      <input type="number" step="0.01" id="humain">
+
+      <button type="button" class="btn" onclick="calculerMoyenne()">Calculer la Moyenne Générale</button>
+    </form>
+
+    <div class="result" id="resultat"></div>
+  </div>
+
+  <script>
+    function calculerMoyenne() {
+      const chimie = (parseFloat(chimie1.value || 0) * 33 + parseFloat(chimie2.value || 0) * 33 + parseFloat(chimieTD.value || 0) * 34) / 100;
+      const bioCell = (parseFloat(bioCell1.value || 0) * 22 + parseFloat(bioCell2.value || 0) * 22 + parseFloat(bioCell3.value || 0) * 22 + parseFloat(bioCellTD.value || 0) * 34) / 100;
+
+      const chimieModule = chimie;
+      const bioCellModule = bioCell;
+      const mathModule = parseFloat(math.value || 0);
+      const physModule = parseFloat(phys.value || 0);
+      const bioVegModule = parseFloat(bioVeg.value || 0);
+      const anatModule = parseFloat(anat.value || 0);
+      const physioModule = parseFloat(physio.value || 0);
+      const frModule = parseFloat(fr.value || 0);
+      const humainModule = parseFloat(humain.value || 0);
+
+      const total = 
+        (chimieModule + bioCellModule + mathModule + mathModule) * 3 +
+        (anatModule + physioModule + bioVegModule + physModule) * 2 +
+        (frModule + humainModule) * 1;
+
+      const moyenne = total / 22;
+
+      const message = moyenne >= 10
+        ? `مبروك! لقد حققت المعدل المطلوب: ${moyenne.toFixed(2)}`
+        : `لم تحقق المعدل المطلوب. معدلك هو: ${moyenne.toFixed(2)}`;
+
+      document.getElementById("resultat").innerText = message;
+    }
+  </script>
+</body>
+</html>
